@@ -26,10 +26,13 @@ def draw():
     screen.blit("background",(0,0))
     b.draw()
     f.draw()
+    screen.draw.text(str(score),(50,50))
     if gameover:
         screen.fill("orange")
+        screen.draw.text("time's up you scored "+ str(score)+" points",center=(300,225),fontsize=50,color="blue")
 
 def update():
+    global score
     if keyboard.left:
         b.x-=3
     if keyboard.right:
@@ -40,6 +43,7 @@ def update():
         b.y+=3
     if f.colliderect(b):
         r()
+        score+=1
     
 clock.schedule(timeup,10.0)
 
